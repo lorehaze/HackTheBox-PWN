@@ -1,0 +1,16 @@
+############################ GET INFOS ########################
+
+Open cap.htb in firefox and go to PCAP in Dashboard
+
+Here, if numbers are zeros, edit the number in URL with 0
+
+Download the pcap and open in wireshark.
+
+Here, are user and passwd.
+
+################################################################
+
+
+Use the username and password to get over FTP.
+
+Here, download the user.txt.

