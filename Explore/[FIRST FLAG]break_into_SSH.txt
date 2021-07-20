@@ -1,0 +1,11 @@
+kali@kali:~/Desktop$ RUN freeciv android exploit
+Password authentication
+Password: 
+:/ $
+
+1|:/ $ cd sdcard
+:/sdcard $ ls
+Alarms  DCIM     Movies Notifications Podcasts  backups   user.txt 
+Android Download Music  Pictures      Ringtones dianxinos 
+:/sdcard $ cat user.txt
+kali@kali:~/Desktop$ 
