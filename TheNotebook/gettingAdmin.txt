@@ -1,0 +1,27 @@
+###################################  GET ADMIN PAGE ###################################
+
+1. Open the machine with Firefox
+2. Use the cookie editor and copy the token while login
+3. the cookie is header.payload.something
+4. go to jwt.io and paste the token here
+5. go to jwt.one and paste the header 
+6. edit the localhost:7070 with localIP:7070
+7. substitute the original header with modified one in jwt.io
+8. copy the payload into jwt.one
+9. set admin rights (admin: true)
+10. switch original payload with custom one in jwt.io
+11. ssh-keygen -t rsa -b 4096 -m PEM -f privKey.key
+12. python3 -m SimpleHTTPServer 7070
+13. copy privKey.key into public and private key in JWT.IO
+14. log into the machine panel
+15. edit the cookie with custom one from jwt.io
+
+
+###################################  SHELL UPLOAD ###################################
+Upload a reverse shell and bind with netcat
+
+go to /tmp/ and tar -zxvf home.tar.gz, then cd into home/noah/.ssh and cat id_rsa
+
+with id_rsa, we can access into noah's ssh with:
+
+ssh -i id_rsa noah@thenotebook.htb

