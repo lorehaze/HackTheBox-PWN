@@ -25,3 +25,10 @@ go to /tmp/ and tar -zxvf home.tar.gz, then cd into home/noah/.ssh and cat id_rs
 with id_rsa, we can access into noah's ssh with:
 
 ssh -i id_rsa noah@thenotebook.htb
+
+Last login: Fri Jul 23 13:56:50 2021 from 10.10.16.62
+noah@thenotebook:~$
+
+###################################  GET THE FLAG ###################################
+
+cat user.txt
