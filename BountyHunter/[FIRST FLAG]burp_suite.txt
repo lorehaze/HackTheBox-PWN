@@ -45,3 +45,5 @@ now we got the login user and pass, SSH into it... PWNED!
 
 cat user.txt
 
+
+CAN TRY dirsearch -u host
